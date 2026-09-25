@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DialedApp — руководство</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0e141b;
+      --panel: #1a2734;
+      --line: rgba(232, 238, 245, 0.12);
+      --text: #e8eef5;
+      --muted: #8b9aab;
+      --accent: #e8a23a;
+      --ok: #4ecf8a;
+      --teal: #3db8a0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Manrope, system-ui, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(900px 500px at 10% -10%, rgba(232,162,58,.14), transparent 55%),
+        radial-gradient(700px 400px at 90% 0%, rgba(61,184,160,.1), transparent 50%),
+        linear-gradient(180deg, #0b1016, var(--bg) 40%, #101820);
+      line-height: 1.55;
+    }
+    .wrap { max-width: 920px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+    .brand { display: flex; align-items: center; gap: .85rem; margin-bottom: 1.25rem; }
+    .mark {
+      width: 48px; height: 48px; border-radius: 14px;
+      display: grid; place-items: center;
+      font-family: Syne, Manrope, sans-serif; font-weight: 800; font-size: 1.35rem;
+      color: #111; background: linear-gradient(145deg, var(--accent), #f0c06a);
+    }
+    h1 {
+      font-family: Syne, Manrope, sans-serif;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      margin: 0 0 .35rem; letter-spacing: .01em;
+    }
+    .sub { color: var(--muted); margin: 0; }
+    .ctas { display: flex; flex-wrap: wrap; gap: .6rem; margin: 1.1rem 0 1.75rem; }
+    .cta {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .7rem 1.15rem; border-radius: 999px;
+      text-decoration: none; font-weight: 700; color: #1a1205;
+      background: linear-gradient(135deg, var(--accent), #d4882a);
+    }
+    .cta.ghost {
+      color: var(--text);
+      background: transparent;
+      border: 1px solid var(--line);
+    }
+    section {
+      background: rgba(26,39,52,.82);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 1.25rem 1.35rem;
+      margin-bottom: 1rem;
+    }
+    h2 {
+      font-family: Syne, Manrope, sans-serif;
+      font-size: 1.15rem; margin: 0 0 .85rem;
+    }
+    h3 { font-size: .95rem; margin: 1rem 0 .4rem; color: #ffd991; }
+    ul, ol { margin: .4rem 0 .6rem; padding-left: 1.2rem; }
+    li { margin: .35rem 0; }
+    .muted { color: var(--muted); }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: .88em;
+      background: rgba(0,0,0,.28);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: .1rem .35rem;
+    }
+    .check li { list-style: none; margin-left: -1.2rem; padding-left: 0; }
+    .check label {
+      display: flex; gap: .65rem; align-items: flex-start;
+      padding: .55rem .65rem; border-radius: 10px;
+      border: 1px solid transparent;
+    }
+    .check label:hover { background: rgba(255,255,255,.03); border-color: var(--line); }
+    .check input { margin-top: .3rem; accent-color: var(--accent); width: 1.05rem; height: 1.05rem; }
+    .pill {
+      display: inline-block; font-size: .75rem; padding: .2rem .55rem;
+      border-radius: 999px; border: 1px solid rgba(78,207,138,.35);
+      color: var(--ok); background: rgba(78,207,138,.08); margin-left: .35rem;
+    }
+    .grid2 {
+      display: grid; gap: .75rem;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    .card {
+      border: 1px solid var(--line); border-radius: 12px; padding: .85rem .95rem;
+      background: rgba(15,23,31,.45);
+    }
+    .card strong { display: block; margin-bottom: .25rem; }
+    table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+    th, td { text-align: left; padding: .45rem .5rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { color: var(--muted); font-weight: 600; }
+    footer { margin-top: 2rem; color: var(--muted); font-size: .85rem; }
+    a { color: var(--teal); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">
+      <div class="mark">D</div>
+      <div>
+        <h1>DialedApp</h1>
+        <p class="sub">Каталог, заказы и аналитика из 1С:УТП · ИП Dialed / ТОО «Диалайт»</p>
+      </div>
+    </div>
+    <div class="ctas">
+      <a class="cta" href="https://dialed.melnichuk.kz/" target="_blank" rel="noopener">Открыть приложение →</a>
+      <a class="cta ghost" href="https://sania2007mav.github.io/falconapp-guide/" target="_blank" rel="noopener">Похожий гайд FalconApp</a>
+    </div>
+
+    <section>
+      <h2>Что это</h2>
+      <p>Веб-приложение поверх OData базы <strong>Управление торговым предприятием</strong> (не УТ). Данные: номенклатура, остатки на складах, цены, контрагенты, заказы покупателя, продажи.</p>
+      <p class="muted">Сайт: <a href="https://dialed.melnichuk.kz/">https://dialed.melnichuk.kz/</a></p>
+    </section>
+
+    <section>
+      <h2>Возможности</h2>
+      <div class="grid2">
+        <div class="card"><strong>Обзор остатков</strong><span class="muted">KPI, диаграммы по складам, топ-10, алерты</span></div>
+        <div class="card"><strong>Дашборды</strong><span class="muted">Выручка, топы, ABC, дебиторка, прогноз окончания</span></div>
+        <div class="card"><strong>Период</strong><span class="muted">Выбор года и месяца на дашбордах</span></div>
+        <div class="card"><strong>Каталог</strong><span class="muted">Папки, поиск, цены, остатки, избранное ★</span></div>
+        <div class="card"><strong>Штрихкод</strong><span class="muted">Поиск по регистру штрихкодов / коду</span></div>
+        <div class="card"><strong>Заказы</strong><span class="muted">История «Заказ покупателя», строки, печать</span></div>
+        <div class="card"><strong>Новый заказ</strong><span class="muted">Контрагент, корзина, создание в 1С</span></div>
+        <div class="card"><strong>Контрагенты</strong><span class="muted">Долг и продажи по клиенту</span></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Как пользоваться</h2>
+      <h3>1. Обзор</h3>
+      <ol>
+        <li>Вкладка <strong>Обзор</strong> — остатки: KPI и графики.</li>
+        <li>Фильтр склада и порог алерта влияют на «Низкие остатки».</li>
+        <li>Избранное (★ в каталоге) и недавние — внизу.</li>
+      </ol>
+      <h3>2. Дашборды</h3>
+      <ol>
+        <li>Вкладка <strong>Дашборды</strong> — меню слева.</li>
+        <li>Справа сверху выберите <strong>Год</strong> и <strong>Месяц</strong> — отчёты пересчитаются за этот период.</li>
+        <li><strong>По дням</strong> — дни выбранного календарного месяца (не «последние 30 дней»).</li>
+        <li><strong>По месяцам</strong> — все месяцы выбранного года.</li>
+        <li>Топы / ABC / месяц vs месяц / склады — тоже за выбранный месяц.</li>
+        <li>Дебиторка, дефицит, мёртвый сток, прогноз — без привязки к месяцу (текущие остатки).</li>
+        <li>Первая загрузка может занять до минуты, дальше кэш.</li>
+      </ol>
+      <h3>3. Каталог и штрихкод</h3>
+      <ol>
+        <li>Папки, поиск, фильтры склада и типа цены (Оптовая / Розничная…).</li>
+        <li>★ — избранное; клик — карточка товара.</li>
+        <li>Иконка штрихкода: камера или ручной ввод.</li>
+      </ol>
+      <h3>4. Заказы</h3>
+      <ol>
+        <li><strong>Заказы</strong> — список из 1С, клик → строки товаров.</li>
+        <li><strong>Заказ</strong> — контрагент, склад, корзина → создать в 1С → печать.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Отличия от FalconApp</h2>
+      <table>
+        <thead><tr><th></th><th>DialedApp</th><th>FalconApp</th></tr></thead>
+        <tbody>
+          <tr><td>Конфигурация 1С</td><td>УТП</td><td>УТ</td></tr>
+          <tr><td>Клиенты</td><td>Контрагенты</td><td>Партнёры</td></tr>
+          <tr><td>Документ заказа</td><td>Заказ покупателя</td><td>Заказ клиента</td></tr>
+          <tr><td>Остатки</td><td>Товары на складах</td><td>Свободные остатки</td></tr>
+          <tr><td>Продажи</td><td>Регистр «Продажи»</td><td>Выручка и себестоимость</td></tr>
+          <tr><td>Telegram</td><td>Нет</td><td>Есть бот и канал</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Чек-лист проверки <span class="pill">для пользователя</span></h2>
+      <p class="muted">Отметьте после проверки на ПК и телефоне. Галочки сохраняются в браузере.</p>
+      <ul class="check">
+        <li><label><input type="checkbox" /> Статус <strong>1С онлайн</strong></label></li>
+        <li><label><input type="checkbox" /> <strong>Обзор</strong>: KPI и графики остатков</label></li>
+        <li><label><input type="checkbox" /> <strong>Дашборды</strong>: выбор года/месяца меняет данные</label></li>
+        <li><label><input type="checkbox" /> Выручка по дням за текущий месяц</label></li>
+        <li><label><input type="checkbox" /> Топ клиентов / ABC / дебиторка</label></li>
+        <li><label><input type="checkbox" /> Прогноз окончания / дефицит / склады</label></li>
+        <li><label><input type="checkbox" /> Каталог: папки, поиск, ★ избранное</label></li>
+        <li><label><input type="checkbox" /> Штрихкод находит товар</label></li>
+        <li><label><input type="checkbox" /> История <strong>Заказы</strong>: список и строки</label></li>
+        <li><label><input type="checkbox" /> Контрагент: долг / покупки в карточке</label></li>
+        <li><label><input type="checkbox" /> Создание заказа в 1С + печать</label></li>
+        <li><label><input type="checkbox" /> Мобильные вкладки и корзина</label></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Если что-то не работает</h2>
+      <ul>
+        <li><strong>1С ошибка / 403</strong> — хостинг go1c.kz временно режет запросы; подождите и обновите.</li>
+        <li><strong>Нет фото</strong> — в УТП картинки через OData часто недоступны; это нормально.</li>
+        <li><strong>Дашборд долго</strong> — первый запрос к 1С; дальше кэш.</li>
+        <li><strong>Пустой месяц</strong> — выберите другой год/месяц, где были продажи.</li>
+        <li><strong>Менеджеры пусто</strong> — в УТП измерение менеджера в продажах обычно недоступно.</li>
+        <li><strong>Камера</strong> — разрешение браузера или ввод вручную (нужен HTTPS).</li>
+      </ul>
+    </section>
+
+    <footer>
+      Dialed · DialedApp ·
+      <a href="https://github.com/sania2007mav/dialedapp-guide">репозиторий</a> ·
+      <a href="USER-CHECKLIST.md">чек-лист.md</a>
+    </footer>
+  </div>
+  <script>
+    document.querySelectorAll('.check input').forEach((el, i) => {
+      const key = 'dialed_check_v1_' + i;
+      el.checked = localStorage.getItem(key) === '1';
+      el.addEventListener('change', () => localStorage.setItem(key, el.checked ? '1' : '0'));
+    });
+  </script>
+</body>
+</html>
